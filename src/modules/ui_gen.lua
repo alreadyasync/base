@@ -54,9 +54,9 @@ return{
 		sf.Size = UDim2.fromScale(1,0.8);
 		sf.ZIndex = 2;
 		local uiList = Instance.new('UIListLayout',sf);
-		uiList.SortOrder.EnumType = Enum.SortOrder.Name;
-		uiList.FillDirection.EnumType = Enum.FillDirection.Vertical;
-		uiList.VerticalAlignment.EnumType = Enum.VerticalAlignment.Bottom;
+		uiList.SortOrder = Enum.SortOrder.Name;
+		uiList.FillDirection = Enum.FillDirection.Vertical;
+		uiList.VerticalAlignment = Enum.VerticalAlignment.Bottom;
 		local l = Instance.new('TextLabel',bg);
 		l.Name = 'placeholder'; 
 		l.Size = UDim2.fromScale(1,0.05);
