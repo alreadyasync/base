@@ -1,4 +1,4 @@
---//name:Remote Control;]]1
+--//name:RemoteControl;]]1
 --//developer:alreadyasync;]]2
 --//version:1.0;]]3
 --//division:rc;]]4
