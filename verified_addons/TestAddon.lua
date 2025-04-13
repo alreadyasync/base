@@ -1,4 +1,4 @@
---//name:Test Addon;]]1
+--//name:TestAddon;]]1
 --//developer:alreadyasync;]]2
 --//version:1.0;]]3
 --//division:t;]]4
