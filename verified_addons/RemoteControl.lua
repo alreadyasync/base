@@ -15,7 +15,7 @@ function mod.OnDisable()
 end;
 function mod.commandExecuted(command, arguments)
 	if command == 'fire' or command == 'f' then
-		local final;
+		local final:string = '';
 		local arg1,arg2;
 		if arguments['arg1'] and arguments['arg2'] then
 			arg1,arg2 = arguments['arg1'],arguments['arg2'];
