@@ -1,9 +1,9 @@
--- BASE - script version 1
+-- BASE - script version 2
 -- alreadycode aka alreadyasync - 2025 - github.com/alreadyasync/base/tree/main/
 
 -- CC-BY-4.0
 
-_G.base_bv = 0.01;
+_G.base_bv = 1.9;
 local BV,pl,dataModel = _G.base_bv;
 
 local cc = require(script.Parent["command_controller.lua"]);
