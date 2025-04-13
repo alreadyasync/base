@@ -7,7 +7,6 @@ local run = game:GetService('RunService');
 if not run:IsRunning() and run:IsServer() then
 	local m,l = script.modules;
 	l = m:GetChildren();
-
 	local modules = {};
 	halt = nil;
 	for i,v in l do
