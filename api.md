@@ -20,3 +20,9 @@ Your code MUST include the following at the START of your script:
 - `mod.onEnable()` - Will be triggered when the module is enabled
 - `mod.onDisable()` - Will be triggered when the module is disabled
 - `mod.commandExecuted(command:string, arguments:table)` - Will be triggered when the module's division followed with a command (and an arg) has been executed
+
+### Placeholders (In commands)
+- `%clipboard%` - Returns what is currently copied to the clipboard
+- `%user%` - Returns the users username
+- `%user.id%` - Returns the users userid
+- `%time%` - Returns the current time
