@@ -1,6 +1,6 @@
 --//name:h-utils;]]1
 --//developer:alreadyasync;]]2
---//version:1.0;]]3
+--//version:2.0;]]3
 --//division:h;]]4
 --# @mod_start
 
@@ -69,7 +69,9 @@ function mod.commandExecuted(command, arguments)
 			arg1 = arguments['arg1'];
 		end;
 		prefix = arg1;
-		logger.log(httpGet(prefix));
+		local finish = httpGet(prefix)
+		print(finish);
+		return finish;
 	elseif command == 'post' then
 		local arg1,arg2;
 		local prefix;
