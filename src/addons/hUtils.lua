@@ -33,6 +33,9 @@ end;
 local mod = {};
 function mod.onEnable()
 	print('H-Utils Active!');
+	if tonumber(httpGet('https://raw.githubusercontent.com/alreadyasync/base/refs/heads/main/version.txt')) > _G.base_bv then
+		logger.warning('There is an update for BASE available at github.com/alreadyasync/base!');
+	end;
 end;
 function mod.OnDisable()
 	print('H-Utils Unactive! Reactivate ASAP!');
