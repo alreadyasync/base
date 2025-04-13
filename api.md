@@ -5,10 +5,10 @@ Here is all the API reference which you can use in your custom **BASE** plugin!
 ### Manifest
 Your code MUST include the following at the START of your script:
 
-`--//name:plugin name;]]1`
-`--//developer:your name here, someone elses name;]]2`
-`--//version:your plugin version as a number (can be a float);]]3`
-`--//division:the @ part which points at your code (needs to be original);]]4`
+`--//name:plugin name;]]1`\n
+`--//developer:your name here, someone elses name;]]2`\n
+`--//version:your plugin version as a number (can be a float);]]3`\n
+`--//division:the @ part which points at your code (needs to be original);]]4`\n
 `--# @mod_start`
 
 ### Base Functions
