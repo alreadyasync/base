@@ -1,4 +1,4 @@
--- BASE - script version 2
+-- BASE - script version 3
 -- alreadycode aka alreadyasync - 2025 - github.com/alreadyasync/base/tree/main/
 
 -- CC-BY-4.0
@@ -14,7 +14,7 @@ function line.log(log)
 		local placeholder = w.background.placeholder:Clone();
 		placeholder.Parent = w.background.logs;
 		placeholder.Visible = true;
-		placeholder.Text = '-> '..log;
+		placeholder.Text = '-> '..tostring(log);
 	end;
 end;
 
@@ -22,7 +22,7 @@ function line.InterpretCommand(command:string)
 	if not string.find(command, '@') then return; end;
 	local division = string.split(string.split(command, '@')[2], ' ')[1];
 	if register[division] then
-		local cmd
+		local cmd;
 		if string.split(string.split(command, ' -')[2], ' ')[1] then
 			cmd = string.split(string.split(command, ' -')[2], ' ')[1];
 		end;
@@ -32,11 +32,32 @@ function line.InterpretCommand(command:string)
 			if not string.split(command, ' ')[a+2] then break end;
 			if string.split(string.split(command, ' ')[a+2], ' ')[1] then
 				args['arg'..a] = string.split(string.split(command, ' ')[a+2], ' ')[1];
+				if string.find(args['arg'..a],'%%') then
+					local c = string.split(args['arg'..a],'%')[2];
+					local d = string.split(c,'%')[1];
+					for _,v in pairs(script.Parent.Parent.runtime.placeholders:GetChildren()) do
+						if v.Name == d then
+							local val = v.Value;
+							if string.find(val, 'VALUES.') then
+								local internal = string.split(val, 'VALUES.')[2];
+								if script.Parent.Parent.runtime.values[internal] then
+									args['arg'..a] = script.Parent.Parent.runtime.values[internal].Value;
+								end;
+							end;
+							if string.find(val, 'MOD') then
+								if v:FindFirstChild('placeholder') then
+									args['arg'..a] = require(v.placeholder)();
+								end;
+							end;
+						end;
+					end;
+				end;
 			end;
 			a+=1;
 			task.wait();
 		until not string.split(command, ' ')[a+2]
-		register[division].commandExecuted(cmd, args);
+		print(cmd, args);
+		return register[division].commandExecuted(cmd, args);
 	end;
 end;
 function line.InterpretModule(moduleScript:string)
@@ -49,7 +70,7 @@ function line.InterpretModule(moduleScript:string)
 			moduleObj.Source = moduleScriptCode;
 			moduleObj.Name = manifest.mod_name;
 			if register[manifest.mod_division] then
-				return 'InterpretModule: Failed - Division is already in use!'
+				return 'InterpretModule: Failed - Division is already registered!'
 			else
 				register[manifest.mod_division] = require(moduleObj);
 				register[manifest.mod_division].onEnable();
@@ -88,6 +109,7 @@ return{
 		end);
 	end;
 	loadMod = line.InterpretModule;
+	loadCommand = line.InterpretCommand;
 	mod = {
 		set_init_override = function(x:boolean) i=x; end;
 	};
@@ -108,6 +130,8 @@ return{
 				};
 			elseif obj == 'data' then
 				return script.Parent["data_controller.lua"];
+			elseif obj == 'controller' then
+				return script.Parent["command_controller.lua"];
 			end;
 		end;
 	};
