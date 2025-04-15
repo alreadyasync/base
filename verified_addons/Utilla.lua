@@ -20,7 +20,7 @@ function mod.commandExecuted(command, arguments)
 			arg1 = arguments['arg1'];
 		end;
 		if arg1 == 'test' then
-			local h = #script.Parent.modules:GetChildren();
+			local h = #script.Parent.Parent.modules:GetChildren();
 			local failed = '';
 			local succeed = 0;
 			for _,check in script.Parent.modules:GetChildren() do
