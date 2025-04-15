@@ -23,7 +23,7 @@ function mod.commandExecuted(command, arguments)
 			local h = #script.Parent.Parent.modules:GetChildren();
 			local failed = '';
 			local succeed = 0;
-			for _,check in script.Parent.modules:GetChildren() do
+			for _,check in script.Parent.Parent.modules:GetChildren() do
 				if require(check).check() then
 					succeed+=1;
 				else
