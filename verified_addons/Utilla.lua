@@ -37,7 +37,6 @@ function mod.commandExecuted(command, arguments)
 				logger.warning('Following modules did not respond: '..failed;
 			end;
 		end;
-		logger.log('Hello world! '..arg1);
 		return;
 	elseif command == 'logger' then
 		local arg1,arg2;
