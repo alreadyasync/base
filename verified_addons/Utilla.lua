@@ -33,7 +33,7 @@ function mod.commandExecuted(command, arguments)
 			if succeed == h then
 				logger.log('All modules successfully replied!');
 			else
-				logger.warning(succeed..'/'..h..' modules successfully replied!);
+				logger.warning(succeed..'/'..h..' modules successfully replied!');
 				logger.warning('Following modules did not respond: '..failed;
 			end;
 		end;
